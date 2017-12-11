@@ -45,27 +45,24 @@ module Shapeshift
 
     def self.get method_args
       url = URI.parse("https://shapeshift.io/#{method_args}")
-      req = Get.new url
+      req = Net::HTTP::Get.new url
 
-      r = start(url.hostname, url.port,
+      r = Net::HTTP.start(url.hostname, url.port,
                 use_ssl: true, connect_timeout: 10, read_timeout: 20 ) {|http|
         http.request(req)
       }
 
       JSON.parse(r.body)
 
-
-      r = Net::HTTP.get(URI.parse("https://shapeshift.io/#{method_args}"))
-      JSON.parse(r)
     end
 
 
     def self.post method, args
       url = URI.parse("https://shapeshift.io/#{method}")
-      req = Post.new url
+      req = Net::HTTP::Post.new url
       req.form_data = args
 
-      r = start(url.hostname, url.port,
+      r = Net::HTTP.start(url.hostname, url.port,
             use_ssl: true, connect_timeout: 10, read_timeout: 120 ) {|http|
         http.request(req)
       }
