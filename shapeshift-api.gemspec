@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Shapeshift crypto exchange API wrapper.}
   spec.description   = %q{Allows transfer one crypto currency into another.}
   spec.homepage      = "https://izx.io"
-
+  spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
