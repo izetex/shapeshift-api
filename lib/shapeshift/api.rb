@@ -33,7 +33,7 @@ module Shapeshift
 
     # {"status"=>"no_deposits", "address"=>"0x553beec262e0ab11dfe43f7d60dc1f51f03e4398"}
     def self.status address
-      get "txStat/#{address}"
+      get "txStat/#{URI::encode_www_form_component address}"
     end
 
 
